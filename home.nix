@@ -15,6 +15,7 @@
     enable = true;
     shellAliases = {
       btw = "echo i use nixos, btw";
+      nix-sync = "sudo nixos-rebuild switch --flake ~/nixos-dotfiles#nixos";
     };
   };
 }

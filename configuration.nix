@@ -14,11 +14,11 @@
 
   users.users.clmove = {
     isNormalUser = true;
-    description = "clmove";
+    shell = pkgs.zsh;
     extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [];
   };
 
+  programs.zsh.enable = true;
   programs.firefox.enable = true;
   programs.hyprland = {
     enable = true;
