@@ -18,4 +18,13 @@
       nix-sync = "sudo nixos-rebuild switch --flake ~/nixos-dotfiles#nixos";
     };
   };
+
+  programs.gh = {
+    enable = true;
+    gitCredentialHelper.enable = true;
+  };
+
+  programs.fastfetch = {
+    enable = true;
+  };
 }
