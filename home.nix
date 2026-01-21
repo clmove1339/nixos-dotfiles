@@ -10,4 +10,11 @@
   home.packages = with pkgs; [
     fastfetch
   ];
+
+  programs.zsh = {
+    enable = true;
+    shellAliases = {
+      btw = "echo i use nixos, btw";
+    };
+  };
 }
