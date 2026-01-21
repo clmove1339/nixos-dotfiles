@@ -40,32 +40,32 @@
         "separator"
         {
           type = "os";
-          key = "OS";
+          key = "distro";
           keyColor = "cyan";
         }
         {
           type = "kernel";
-          key = "Ker";
+          key = "kernel";
           keyColor = "cyan";
         }
         {
           type = "uptime";
-          key = "Up";
+          key = "uptime";
           keyColor = "cyan";
         }
         {
           type = "packages";
-          key = "Pkg";
+          key = "pkgs";
           keyColor = "cyan";
         }
         {
           type = "shell";
-          key = "Sh";
+          key = "shell";
           keyColor = "cyan";
         }
         {
           type = "memory";
-          key = "Mem";
+          key = "memory";
           keyColor = "cyan";
         }
       ];
