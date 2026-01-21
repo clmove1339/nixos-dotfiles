@@ -26,5 +26,49 @@
 
   programs.fastfetch = {
     enable = true;
+    settings = {
+      logo = {
+        source = "nixos_small";
+        padding = { right = 1; };
+      };
+      display = {
+        separator = "  ";
+        color = "cyan";
+      };
+      modules = [
+        "title"
+        "separator"
+        {
+          type = "os";
+          key = "OS";
+          keyColor = "cyan";
+        }
+        {
+          type = "kernel";
+          key = "Ker";
+          keyColor = "cyan";
+        }
+        {
+          type = "uptime";
+          key = "Up";
+          keyColor = "cyan";
+        }
+        {
+          type = "packages";
+          key = "Pkg";
+          keyColor = "cyan";
+        }
+        {
+          type = "shell";
+          key = "Sh";
+          keyColor = "cyan";
+        }
+        {
+          type = "memory";
+          key = "Mem";
+          keyColor = "cyan";
+        }
+      ];
+    };
   };
 }
