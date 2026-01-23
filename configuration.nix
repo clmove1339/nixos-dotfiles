@@ -18,7 +18,7 @@
   users.users.clmove = {
     isNormalUser = true;
     shell = pkgs.zsh;
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "wheel" ];
   };
 
   programs.zsh.enable = true;
