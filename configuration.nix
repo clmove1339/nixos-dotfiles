@@ -9,8 +9,9 @@
 
   networking.hostName = "nixos";
   
+  networking.networkmanager.enable = false;
   networking.wireless.enable = false;
-  networking.wireless.iwd.enable = false;
+  networking.wireless.iwd.enable = true;
 
   time.timeZone = "Europe/Moscow";
 
