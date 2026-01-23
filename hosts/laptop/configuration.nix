@@ -37,7 +37,7 @@
     enable = true;
     settings = {
       default_session = {
-        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd uwsm start default";
+        command = "${pkgs.tuigreet}/bin/tuigreet --time";
         user = "greeter";
       };
     };

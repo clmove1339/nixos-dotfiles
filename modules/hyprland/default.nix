@@ -5,7 +5,7 @@
 
     settings = {
       monitor = [
-        "monitor=,preferred,auto,auto"
+        "eDP-1,1920x1200,auto,1"
       ];
 
       general = {
