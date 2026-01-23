@@ -2,6 +2,8 @@
 
 {
   imports = [
+    ./nix-format.nix
+
     ./hyprland
     ./kitty
     ./waybar
