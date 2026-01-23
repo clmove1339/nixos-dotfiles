@@ -13,17 +13,6 @@
   networking.wireless.enable = false;
   networking.wireless.iwd.enable = true;
 
-  services.displayManager.ly = {
-    enable = true;
-    x11Support = false;
-    settings = {
-      bigclock = true;
-      hide_key_hints = true;
-      hide_version_string = true;
-      clear_password = true;
-    };
-  };
-
   time.timeZone = "Europe/Moscow";
 
   users.users.clmove = {
