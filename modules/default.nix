@@ -1,7 +1,10 @@
 { config, pkgs, ... }:
 
 {
+  
   imports = [
+    inputs.noctalia.homeModules.default
+
     ./nix-format.nix
 
     ./hyprland
