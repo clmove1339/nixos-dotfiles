@@ -8,7 +8,7 @@
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
   networking.hostName = "nixos";
-  # networking.networkmanager.enable = true;
+  networking.wireless.iwd.enable = false;
 
   time.timeZone = "Europe/Moscow";
 
