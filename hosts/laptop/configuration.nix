@@ -1,4 +1,9 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 {
   imports = [ ./hardware-configuration.nix ];
@@ -8,7 +13,7 @@
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
   networking.hostName = "laptop";
-  
+
   networking.networkmanager.enable = false;
   networking.wireless.enable = false;
   networking.wireless.iwd.enable = true;
@@ -23,11 +28,11 @@
 
   programs.zsh.enable = true;
   programs.hyprland = {
-          enable = true;
-          xwayland.enable = true;
-          withUWSM = true;
-        };
-services.displayManager.defaultSession = "hyprland-uwsm";
+    enable = true;
+    xwayland.enable = true;
+    withUWSM = true;
+  };
+  services.displayManager.defaultSession = "hyprland-uwsm";
   services.greetd = {
     enable = true;
     settings = {
@@ -37,13 +42,16 @@ services.displayManager.defaultSession = "hyprland-uwsm";
       };
     };
   };
-programs.uwsm.enable = true;
+  programs.uwsm.enable = true;
 
   environment.systemPackages = with pkgs; [
   ];
 
   services.openssh.enable = true;
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
   system.stateVersion = "25.11";
 }

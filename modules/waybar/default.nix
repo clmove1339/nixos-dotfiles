@@ -15,7 +15,12 @@
         spacing = 4;
         modules-left = [ "hyprland/workspaces" ];
         modules-center = [ "clock" ];
-        modules-right = [ "network" "pulseaudio" "battery" "tray" ];
+        modules-right = [
+          "network"
+          "pulseaudio"
+          "battery"
+          "tray"
+        ];
 
         "hyprland/workspaces" = {
           disable-scroll = true;
@@ -50,7 +55,11 @@
             phone = "";
             portable = "";
             car = "";
-            default = ["" "" ""];
+            default = [
+              ""
+              ""
+              ""
+            ];
           };
           on-click = "pavucontrol";
         };

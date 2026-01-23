@@ -10,26 +10,32 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }@inputs:
-  let
-    system = "x86_64-linux";
-    username = "clmove";
-  in
-  {
-    nixosConfigurations.laptop = nixpkgs.lib.nixosSystem {
-      inherit system;
+  outputs =
+    {
+      self,
+      nixpkgs,
+      home-manager,
+      ...
+    }@inputs:
+    let
+      system = "x86_64-linux";
+      username = "clmove";
+    in
+    {
+      nixosConfigurations.laptop = nixpkgs.lib.nixosSystem {
+        inherit system;
 
-      modules = [
-        ./hosts/laptop/configuration.nix
+        modules = [
+          ./hosts/laptop/configuration.nix
 
-        home-manager.nixosModules.home-manager
-        {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
 
-          home-manager.users.${username} = import ./modules;
-        }
-      ];
+            home-manager.users.${username} = import ./modules;
+          }
+        ];
+      };
     };
-  };
 }
