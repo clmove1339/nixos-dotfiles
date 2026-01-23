@@ -22,7 +22,16 @@
   };
 
   programs.zsh.enable = true;
-  programs.hyprland.enable = true;
+  programs.hyprland = {
+          enable = true;
+          xwayland.enable = true;
+          withUWSM = true;
+        };
+services.displayManager.defaultSession = "hyprland-uwsm";
+services.displayManager.autoLogin = {
+enable = true;
+user = "clmove";
+};
 
   environment.systemPackages = with pkgs; [
   ];

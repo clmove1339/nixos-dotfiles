@@ -37,7 +37,6 @@
     firefox
     vesktop
     telegram-desktop
-    yandex-music
 
     noto-fonts
     font-awesome

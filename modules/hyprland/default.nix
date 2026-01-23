@@ -1,7 +1,6 @@
 {
   wayland.windowManager.hyprland = {
     enable = true;
-    systemd.enable = true;
     xwayland.enable = true;
 
     settings = {
@@ -9,7 +8,6 @@
         "monitor=,preferred,auto,auto"
       ];
 
-      # General appearance
       general = {
         gaps_out = 10;
         gaps_in = 5;
@@ -20,36 +18,30 @@
 
       decoration = {
         rounding = 0;
+
         active_opacity = 1.0;
-        inactive_opacity = 0.95;
+        inactive_opacity = 1.0;
         fullscreen_opacity = 1.0;
 
         blur = {
-          enabled = true;
-          size = 3;
-          passes = 1;
+          enabled = false;
         };
       };
 
-      # Animations
       animations = {
         enabled = false;
       };
 
-      # Cursor and input
       cursor = {
         no_hardware_cursors = true;
       };
 
-      # Miscellaneous settings
       misc = {
         force_default_wallpaper = 2;
         disable_hyprland_logo = false;
         disable_splash_rendering = true;
-        focus_on_activate = true;
       };
 
-      # Input configuration
       input = {
         kb_layout = "us,ru";
         kb_variant = ",";
@@ -80,9 +72,6 @@
             "SUPER, RETURN, exec, kitty"
             "SUPER, SPACE, exec, wofi --show drun"
             "SUPER, W, exec, firefox"
-            "SUPER, E, exec, dolphin"
-            "SUPER, T, exec, thunderbird"
-            "SUPER, F, exec, flameshot gui"
           ];
 
           # Window management
