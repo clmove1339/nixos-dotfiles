@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
   imports = [ ./hardware-configuration.nix ];
@@ -28,10 +28,16 @@
           withUWSM = true;
         };
 services.displayManager.defaultSession = "hyprland-uwsm";
-services.displayManager.autoLogin = {
-enable = true;
-user = "clmove";
-};
+  services.greetd = {
+    enable = true;
+    settings = {
+      default_session = {
+        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd uwsm start default";
+        user = "greeter";
+      };
+    };
+  };
+programs.uwsm.enable = true;
 
   environment.systemPackages = with pkgs; [
   ];
