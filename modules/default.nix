@@ -4,6 +4,8 @@
   imports = [
     ./hyprland
     ./kitty
+    ./waybar
+    ./wofi
   ];
 
   home.username = "clmove";
@@ -43,8 +45,4 @@
   };
 
   programs.gh.enable = true;
-
-  programs.wofi.enable = true;
-  programs.waybar.enable = true;
-  programs.waybar.systemd.enable = true;
 }

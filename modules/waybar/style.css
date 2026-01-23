@@ -1,0 +1,122 @@
+* {
+    border: none;
+    border-radius: 0;
+    font-family: "JetBrainsMono Nerd Font", "Roboto", "Segoe UI", sans-serif;
+    font-size: 13px;
+    min-height: 0;
+}
+
+window#waybar {
+    background: transparent;
+    color: #ffffff;
+    border-bottom: 2px solid rgba(89, 89, 89, 0.66);
+}
+
+#workspaces {
+    background: #1e1e1e;
+    margin: 4px;
+    padding: 0;
+}
+
+#workspaces button {
+    padding: 0 10px;
+    background: transparent;
+    color: #ffffff;
+    border-bottom: 2px solid transparent;
+}
+
+#workspaces button:hover {
+    background: rgba(142, 192, 40, 0.2);
+    box-shadow: inherit;
+    border-bottom: 2px solid #ffffff;
+}
+
+#workspaces button.active {
+    background: #1e1e1e;
+    border-bottom: 2px solid #8ec028;
+}
+
+#workspaces button.urgent {
+    background-color: #eb4d4b;
+}
+
+#clock,
+#battery,
+#cpu,
+#memory,
+#disk,
+#temperature,
+#backlight,
+#network,
+#pulseaudio,
+#custom-media,
+#tray,
+#mode,
+#idle_inhibitor,
+#mpd {
+    padding: 0 10px;
+    margin: 4px 2px;
+    color: #ffffff;
+    background: #1e1e1e;
+    border: 1px solid rgba(89, 89, 89, 0.66);
+}
+
+#window,
+#workspaces {
+    margin: 0 4px;
+}
+
+/* If workspaces is the leftmost module, omit left margin */
+.modules-left > widget:first-child > #workspaces {
+    margin-left: 0;
+}
+
+/* If workspaces is the rightmost module, omit right margin */
+.modules-right > widget:last-child > #workspaces {
+    margin-right: 0;
+}
+
+#clock {
+    color: #8ec028;
+    background: #1e1e1e;
+    border-bottom: 2px solid #8ec028;
+}
+
+#battery {
+    color: #8ec028;
+}
+
+#battery.charging, #battery.plugged {
+    color: #ffffff;
+    background-color: #26A65B;
+}
+
+#battery.critical:not(.charging) {
+    background-color: #f53c3c;
+    color: #ffffff;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+label:focus {
+    background-color: #000000;
+}
+
+#network {
+    color: #8ec028;
+}
+
+#network.disconnected {
+    background-color: #f53c3c;
+}
+
+#pulseaudio {
+    color: #8ec028;
+}
+
+#pulseaudio.muted {
+    color: #7a7a7a;
+}
