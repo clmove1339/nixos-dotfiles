@@ -24,7 +24,7 @@
     shellAliases = {
       ff = "fastfetch";
 
-      nix-sync = "sudo nixos-rebuild switch --flake ~/nixos-dotfiles#nixos";
+      nix-sync = "sudo nixos-rebuild switch --flake ~/nixos-dotfiles";
       nix-clean = "sudo nix-collect-garbage -d";
     };
   };
