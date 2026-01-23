@@ -22,16 +22,9 @@
   };
 
   programs.zsh.enable = true;
-  programs.firefox.enable = true;
-  programs.hyprland = {
-    enable = true;
-    withUWSM = true;
-    xwayland.enable = true;
-  };
+  programs.hyprland.enable = true;
 
   environment.systemPackages = with pkgs; [
-    git
-    kitty
   ];
 
   services.openssh.enable = true;

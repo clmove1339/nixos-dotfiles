@@ -1,6 +1,11 @@
 { config, pkgs, ... }:
 
 {
+  imports = [
+    ./hyprland
+    ./kitty
+  ];
+
   home.username = "clmove";
   home.homeDirectory = "/home/clmove";
   home.stateVersion = "25.11";
@@ -19,12 +24,16 @@
 
   programs.home-manager.enable = true;
 
+  programs.git = {
+    enable = true;
+  };
+
   programs.zsh = {
     enable = true;
     shellAliases = {
       ff = "fastfetch";
 
-      nix-sync = "sudo nixos-rebuild switch --flake ~/nixos-dotfiles";
+      nix-sync = "sudo nixos-rebuild switch --flake ~/nixos-dotfiles --fast";
       nix-clean = "sudo nix-collect-garbage -d";
     };
   };
