@@ -15,7 +15,6 @@
 
   home.packages = with pkgs; [
     telegram-desktop
-    net-tools
   ];
 
   programs.home-manager.enable = true;
