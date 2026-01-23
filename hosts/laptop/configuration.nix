@@ -7,7 +7,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
-  networking.hostName = "nixos";
+  networking.hostName = "laptop";
   
   networking.networkmanager.enable = false;
   networking.wireless.enable = false;
