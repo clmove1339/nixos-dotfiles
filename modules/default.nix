@@ -9,7 +9,7 @@
 
     ./hyprland
     ./kitty
-    ./waybar
+    # ./waybar
     ./wofi
   ];
 

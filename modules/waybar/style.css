@@ -4,6 +4,9 @@
     font-family: "JetBrains Mono";
     font-size: 13px;
     min-height: 0;
+
+    transition: none;
+    animation: none;
 }
 
 window#waybar {
@@ -47,16 +50,16 @@ window#waybar {
 #mode,
 #idle_inhibitor,
 #mpd {
-    padding: 0 10px;
-    margin: 4px 4px;
+    padding: 0 4px;
+    margin: 4px 2px;
     color: #ffffff;
     background: #1e1e1e;
     border: 1px solid rgba(89, 89, 89, 0.66);
 }
 
-#window,
 #workspaces {
-    margin: 4 4px;
+    margin: 4px;
+    border: 1px solid rgba(89, 89, 89, 0.66);
 }
 
 /* If workspaces is the leftmost module, omit left margin */
