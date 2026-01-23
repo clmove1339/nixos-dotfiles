@@ -1,7 +1,7 @@
 * {
     border: none;
     border-radius: 0;
-    font-family: "JetBrainsMono Nerd Font", "Roboto", "Segoe UI", sans-serif;
+    font-family: "JetBrains Mono";
     font-size: 13px;
     min-height: 0;
 }
@@ -9,7 +9,6 @@
 window#waybar {
     background: transparent;
     color: #ffffff;
-    border-bottom: 2px solid rgba(89, 89, 89, 0.66);
 }
 
 #workspaces {
@@ -23,12 +22,6 @@ window#waybar {
     background: transparent;
     color: #ffffff;
     border-bottom: 2px solid transparent;
-}
-
-#workspaces button:hover {
-    background: rgba(142, 192, 40, 0.2);
-    box-shadow: inherit;
-    border-bottom: 2px solid #ffffff;
 }
 
 #workspaces button.active {
@@ -55,7 +48,7 @@ window#waybar {
 #idle_inhibitor,
 #mpd {
     padding: 0 10px;
-    margin: 4px 2px;
+    margin: 4px 4px;
     color: #ffffff;
     background: #1e1e1e;
     border: 1px solid rgba(89, 89, 89, 0.66);
@@ -63,7 +56,7 @@ window#waybar {
 
 #window,
 #workspaces {
-    margin: 0 4px;
+    margin: 4 4px;
 }
 
 /* If workspaces is the leftmost module, omit left margin */
