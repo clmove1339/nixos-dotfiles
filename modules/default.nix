@@ -10,11 +10,33 @@
     ./nix-format.nix
 
     ./hyprland
-    # ./kitty
     ./ghostty
     ./waybar
     ./wofi
   ];
+
+  services.mako = {
+    enable = true;
+
+    settings = {
+      font = "JetBrains Mono 12";
+      width = 300;
+      height = 150;
+      margin = "10";
+      padding = "5";
+      border-size = 2;
+      border-radius = 0;
+
+      background-color = "#1e1e1e";
+      text-color = "#ffffff";
+      border-color = "#595959";
+      progress-color = "over #6a901e";
+
+      default-timeout = 15000;
+      layer = "overlay";
+      anchor = "top-right";
+    };
+  };
 
   home.username = "clmove";
   home.homeDirectory = "/home/clmove";
@@ -42,6 +64,8 @@
   };
 
   home.packages = with pkgs; [
+    libnotify
+
     firefox
     vesktop
     telegram-desktop
