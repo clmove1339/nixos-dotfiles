@@ -4,8 +4,6 @@ let
   terminal = "ghostty";
   menu = "rofi -show drun";
 
-  # Helper to generate directional bindings for both arrows and vim keys
-  # directions = { key = direction; ... }
   directions = {
     "left" = "l";
     "right" = "r";
@@ -57,19 +55,17 @@ in
       };
 
       bind = lib.flatten [
-        # Essentials
         "$mod, RETURN, exec, ${terminal}"
         "$mod, SPACE, exec, ${menu}"
-        "$mod, C, killactive,"
+        "$mod, Q, killactive,"
         "$mod, M, exit,"
         "$mod, V, togglefloating,"
         "$mod, F, fullscreen,"
 
-        # Workspace Navigation (Mouse/Arrows)
         "$mod, mouse_down, workspace, e+1"
         "$mod, mouse_up, workspace, e-1"
-        "$mod ALT, left, workspace, -1"
-        "$mod ALT, right, workspace, +1"
+        "$mod CTRL, left, workspace, -1"
+        "$mod CTRL, right, workspace, +1"
 
         # Generate Workspace Bindings (Key 1-9 -> WS 1-9, Key 0 -> WS 10)
         (map (n:
@@ -86,7 +82,7 @@ in
         (lib.mapAttrsToList (key: dir: [
           "$mod, ${key}, movefocus, ${dir}"
           "$mod SHIFT, ${key}, movewindow, ${dir}"
-          "$mod CTRL, ${key}, resizeactive, ${if dir == "l" then "-20 0" else if dir == "r" then "20 0" else if dir == "u" then "0 -20" else "0 20"}"
+          "$mod ALT, ${key}, resizeactive, ${if dir == "l" then "-20 0" else if dir == "r" then "20 0" else if dir == "u" then "0 -20" else "0 20"}"
         ]) directions)
       ];
 
