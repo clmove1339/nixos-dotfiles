@@ -15,10 +15,10 @@
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
   networking.hostName = "laptop";
-
-  networking.networkmanager.enable = false;
   networking.wireless.enable = false;
   networking.wireless.iwd.enable = true;
+  networking.networkmanager.enable = true;
+  networking.networkmanager.wifi.backend = "iwd";
 
   time.timeZone = "Europe/Moscow";
 
@@ -26,6 +26,15 @@
     isNormalUser = true;
     shell = pkgs.zsh;
     extraGroups = [ "wheel" ];
+  };
+
+  hardware.bluetooth.enable = true;
+  hardware.bluetooth.powerOnBoot = true;
+
+  xdg.portal = {
+    enable = true;
+    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+    config.common.default = [ "hyprland" ];
   };
 
   programs.zsh.enable = true;
