@@ -1,0 +1,80 @@
+* {
+    /* Global variables to match your colors */
+    bg-col:  #1e1e1e;
+    bg-hover: #262626;
+    fg-col:  #ffffff;
+    accent:  #8ec028;
+    border-col: #595959;
+
+    font: "JetBrains Mono Bold 12";
+    background-color: @bg-col;
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+window {
+    width: 600px;
+    border: 2px;
+    border-color: @border-col;
+    background-color: @bg-col;
+}
+
+mainbox {
+    background-color: @bg-col;
+    children: [inputbar, listview];
+}
+
+inputbar {
+    children: [entry];
+    background-color: @bg-col;
+    padding: 10px;
+    margin: 5px;
+    border: 0 0 2px 0;
+    border-color: @border-col;
+}
+
+/* Logic for the "focus" color change in input */
+inputbar {
+    border-color: @border-col;
+}
+
+/* Rofi doesn't have a pseudo-class for 'input:focus',
+   so the border stays the border-col or accent color. */
+
+entry {
+    padding: 5px;
+    text-color: @fg-col;
+    background-color: @bg-col;
+    placeholder: "Search...";
+}
+
+listview {
+    border: 0px;
+    padding: 5px;
+    margin: 5px;
+    columns: 1;
+    lines: 10;
+    background-color: @bg-col;
+}
+
+element {
+    padding: 5px;
+    background-color: transparent;
+    text-color: @fg-col;
+}
+
+element-text {
+    background-color: inherit;
+    text-color: inherit;
+    margin: 5px;
+}
+
+element selected {
+    background-color: @bg-col; /* Matches your entry:selected */
+    text-color: @accent;        /* Matches your text:selected */
+}
+
+element hover {
+    background-color: @bg-hover; /* Matches your entry:hover */
+}
