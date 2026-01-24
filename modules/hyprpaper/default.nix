@@ -6,7 +6,7 @@
       ipc = "on";
       splash = false;
 
-      preload = [ "${./wallpaper.png}" ]; 
+      preload = [ "${./wallpaper.png}" ];
       wallpaper = [ ",${./wallpaper.png}" ];
     };
   };
