@@ -3,6 +3,9 @@
 {
   programs.wofi = {
     enable = true;
+
+    style = ./style.css;
+
     settings = {
       width = 600;
       height = 400;
@@ -20,52 +23,5 @@
       image_size = 24;
       gtk_dark = true;
     };
-    style = ''
-      window {
-        margin: 0px;
-        border: 2px solid #8ec028;
-        background-color: #1e1e1e;
-        border-radius: 0px;
-      }
-
-      #input {
-        margin: 5px;
-        border: none;
-        color: #ffffff;
-        background-color: #323232;
-        border-radius: 0px;
-      }
-
-      #inner-box {
-        margin: 5px;
-        border: none;
-        background-color: #1e1e1e;
-        border-radius: 0px;
-      }
-
-      #outer-box {
-        margin: 5px;
-        border: none;
-        background-color: #1e1e1e;
-        border-radius: 0px;
-      }
-
-      #scroll {
-        margin: 0px;
-        border: none;
-        border-radius: 0px;
-      }
-
-      #text {
-        margin: 5px;
-        border: none;
-        color: #ffffff;
-      }
-
-      #entry:selected {
-        background-color: #8ec028;
-        border-radius: 0px;
-      }
-    '';
   };
 }
