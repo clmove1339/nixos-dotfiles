@@ -1,121 +1,135 @@
+/* --- Global Styles --- */
 * {
-    box-shadow: none;
-    text-shadow: none;
-
-    border: none;
-    border-top: none;
-    border-left: none;
-    border-right: none;
-    border-bottom: none;
-    border-radius: 0px;
-
-    font-family: "JetBrains Mono";
-    font-size: 12pt;
+    font-family: "JetBrains Mono Nerd Font", "JetBrains Mono", monospace;
+    font-size: 13px;
     font-weight: bold;
-
+    border: none;
+    border-radius: 0;
     min-height: 0;
-
-    transition: none;
-    animation: none;
 }
 
-.modules-left {
-    padding-left: 10px;
-}
-
-.modules-right {
-    padding-right: 10px;
-}
-
+/* Base Waybar - transparent background allows for "floating" modules */
 #waybar {
     background: transparent;
-    color: #ffffff;
+    color: #ebdbb2;
+    /* Gruvbox light text */
 }
 
-#workspaces {
+/* Tooltip styling */
+tooltip {
     background: #1e1e1e;
-    border-top: 2px solid #595959;
-    border-left: 2px solid #595959;
-    border-right: 2px solid #595959;
+    border: 1px solid #595959;
+    border-radius: 8px;
+}
+
+/* --- Module Spacing (The "Island" Look) --- */
+.modules-left,
+.modules-center,
+.modules-right {
+    margin: 5px 5px;
+    /* Adds space from screen edge */
+}
+
+/* Generic module style */
+#workspaces,
+#window,
+#clock,
+#battery,
+#pulseaudio,
+#network,
+#cpu,
+#memory,
+#tray,
+#custom-media {
+    background: #1e1e1e;
+    color: #ffffff;
+    padding: 0px 12px;
+    margin: 0 4px;
+    border: 2px solid #595959;
+    border-radius: 8px;
+    /* Smooth rounded corners */
+    transition: all 0.3s cubic-bezier(.55, -0.68, .48, 1.682);
+}
+
+/* --- Hyprland Window Style --- */
+#window {
+    color: #8ec028;
+    /* Focused window title color */
+    border-color: #8ec028;
+    background: rgba(30, 30, 30, 0.8);
+    font-style: italic;
+    /* This makes it disappear when no window is open */
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+/* Style for when no window is focused */
+window#waybar.empty #window {
+    background: transparent;
+    border: none;
+}
+
+/* --- Workspaces --- */
+#workspaces {
+    padding: 0;
+    /* Remove internal padding to handle button spacing */
 }
 
 #workspaces button {
-    border-bottom: 2px solid #595959;
-}
-
-#workspaces button.persistent {
-    color: rgba(255, 255, 255, 0.75);
-}
-
-#workspaces button.empty {
-    color: rgba(255, 255, 255, 0.25);
+    color: #7a7a7a;
+    padding: 0 8px;
+    border-bottom: 3px solid transparent;
 }
 
 #workspaces button.active {
-    border-bottom: 2px solid #8ec028;
+    color: #8ec028;
+    border-bottom: 3px solid #8ec028;
 }
 
 #workspaces button.urgent {
     background-color: #eb4d4b;
+    color: white;
 }
 
-#clock,
-#battery,
-#cpu,
-#memory,
-#disk,
-#temperature,
-#backlight,
-#network,
-#pulseaudio,
-#custom-media,
-#tray,
-#mode,
-#idle_inhibitor,
-#mpd {
-    padding: 0px 15px;
-    color: #ffffff;
-    background: #1e1e1e;
-    border: 2px solid #595959;
+#workspaces button:hover {
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: inherit;
+    text-shadow: inherit;
 }
 
+/* --- Specialized Module Colors --- */
 #clock {
     color: #8ec028;
-    background: #1e1e1e;
-    border-bottom: 2px solid #8ec028;
-}
-
-#battery {
-    color: #8ec028;
+    border-color: #8ec028;
 }
 
 #battery.charging,
 #battery.plugged {
-    color: #ffffff;
-    background-color: #26A65B;
+    color: #8ec028;
+    border-color: #8ec028;
 }
 
 #battery.critical:not(.charging) {
     background-color: #f53c3c;
+    border-color: #f53c3c;
     color: #ffffff;
-}
-
-label:focus {
-    background-color: #000000;
-}
-
-#network {
-    color: #8ec028;
-}
-
-#network.disconnected {
-    background-color: #f53c3c;
-}
-
-#pulseaudio {
-    color: #8ec028;
+    animation: blink 0.5s steps(12) infinite alternate;
 }
 
 #pulseaudio.muted {
     color: #7a7a7a;
+    border-color: #595959;
+}
+
+#network.disconnected {
+    background-color: #f53c3c;
+    border-color: #f53c3c;
+}
+
+/* --- Animations --- */
+@keyframes blink {
+    to {
+        background-color: #1e1e1e;
+        color: #f53c3c;
+    }
 }
