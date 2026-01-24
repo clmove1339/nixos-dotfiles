@@ -1,4 +1,5 @@
-{ lib, ... }:
+{ pkgs, lib, ... }:
+
 let
   modifier = "SUPER";
   terminal = "ghostty";
@@ -66,11 +67,21 @@ in
 
       # Resize Repeat Fix
       binde = lib.flatten [
-        (lib.mapAttrsToList (key: dir:
+        (lib.mapAttrsToList (
+          key: dir:
           let
-            res = if dir == "l" then "-20 0" else if dir == "r" then "20 0"
-                  else if dir == "u" then "0 -20" else "0 20";
-          in "$mod ALT, ${key}, resizeactive, ${res}") directions)
+            res =
+              if dir == "l" then
+                "-20 0"
+              else if dir == "r" then
+                "20 0"
+              else if dir == "u" then
+                "0 -20"
+              else
+                "0 20";
+          in
+          "$mod ALT, ${key}, resizeactive, ${res}"
+        ) directions)
       ];
 
       bind = lib.flatten [
@@ -81,23 +92,21 @@ in
         "$mod, V, togglefloating,"
         "$mod, F, fullscreen,"
 
-        "$mod ALT, right, exec, ${cycle_ws} +1"
-        "$mod ALT, left, exec, ${cycle_ws} -1"
+        "$mod CTRL, right, exec, ${cycle_ws} +1"
+        "$mod CTRL, left, exec, ${cycle_ws} -1"
 
         # Generate Workspace Bindings
-        (map
-          (
-            n:
-            let
-              key = toString n;
-              ws = if n == 0 then "10" else key;
-            in
-            [
-              "$mod, ${key}, workspace, ${ws}"
-              "$mod SHIFT, ${key}, movetoworkspace, ${ws}"
-            ]
-          ) (builtins.genList (n: n) 10)
-        )
+        (map (
+          n:
+          let
+            key = toString n;
+            ws = if n == 0 then "10" else key;
+          in
+          [
+            "$mod, ${key}, workspace, ${ws}"
+            "$mod SHIFT, ${key}, movetoworkspace, ${ws}"
+          ]
+        ) (builtins.genList (n: n) 10))
 
         # Directional Bindings (Focus, Move)
         (lib.mapAttrsToList (key: dir: [
