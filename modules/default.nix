@@ -12,6 +12,7 @@
     ./ghostty
 
     ./hyprland
+    ./hyprpaper
     ./waybar
 
     ./rofi
