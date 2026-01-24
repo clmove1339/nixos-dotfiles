@@ -70,17 +70,23 @@
           ${pkgs.greetd.tuigreet}/bin/tuigreet \
             --time \
             --asterisks \
-            --user-menu \
-            --greeting "Welcome to NixOS" \
             --window-padding 2 \
             --container-padding 2 \
-            --remember \
-            --remember-user-session \
             --cmd Hyprland
         '';
         user = "greeter";
       };
     };
+  };
+
+  systemd.services.greetd.serviceConfig = {
+    Type = "idle";
+    StandardInput = "tty";
+    StandardOutput = "tty";
+    StandardError = "journal"; # Better for debugging
+    TTYReset = true;
+    TTYVHangup = true;
+    TTYVTDisallocate = true;
   };
 
   security.rtkit.enable = true;
