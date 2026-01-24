@@ -117,8 +117,8 @@ in
         "$mod, V, togglefloating,"
         "$mod, F, fullscreen,"
 
-        "$mod CTRL, Right, exec, cycle-workspace next"
-        "$mod CTRL, Left, exec, cycle-workspace prev"
+        "$mod CTRL, right, exec, ${cycle-workspace}/bin/cycle-workspace next"
+        "$mod CTRL, left, exec, ${cycle-workspace}/bin/cycle-workspace prev"
 
         #"$mod CTRL, right, exec, ${cycle_ws} +1"
         # "$mod CTRL, left, exec, ${cycle_ws} -1"

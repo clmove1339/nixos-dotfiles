@@ -14,7 +14,10 @@
         margin-top = 10;
         height = 36;
         spacing = 5;
-        modules-left = [ "hyprland/workspaces" ];
+        modules-left = [
+          "hyprland/workspaces"
+          "hyprland/window"
+        ];
         modules-center = [ "clock" ];
         modules-right = [
           "network"
@@ -26,7 +29,9 @@
         "hyprland/workspaces" = {
           disable-scroll = true;
           all-outputs = true;
-          format = "{name}";
+          persistent-workspaces = {
+            "*" = 5;
+          };
         };
 
         "clock" = {
