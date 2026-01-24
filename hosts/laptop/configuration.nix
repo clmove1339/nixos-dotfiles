@@ -66,7 +66,18 @@
     enable = true;
     settings = {
       default_session = {
-        command = "${pkgs.tuigreet}/bin/tuigreet --time";
+        command = ''
+          ${pkgs.greetd.tuigreet}/bin/tuigreet \
+            --time \
+            --asterisks \
+            --user-menu \
+            --greeting "Welcome to NixOS" \
+            --window-padding 2 \
+            --container-padding 2 \
+            --remember \
+            --remember-user-session \
+            --cmd Hyprland
+        '';
         user = "greeter";
       };
     };
