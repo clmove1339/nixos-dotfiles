@@ -113,8 +113,19 @@
 
   programs.zsh = {
     enable = true;
+    enableCompletion = true;
+    autosuggestion.enable = true;
+    syntaxHighlighting.enable = true;
+
     shellAliases = {
       ff = "fastfetch";
+
+      ls = "${pkgs.eza}/bin/eza --icons --group-directories-first --git";
+      ll = "ls -l";
+      la = "ls -la";
+
+      cat = "${pkgs.bat}/bin/bat";
+
       nix-sync = "sudo nixos-rebuild switch --flake ~/nixos-dotfiles";
       nix-clean = "sudo nix-collect-garbage -d";
     };
