@@ -70,11 +70,6 @@
         style_user = "bold yellow";
       };
 
-      directory = {
-        read_only = " 🔒";
-        truncation_symbol = "…/";
-      };
-
       character = {
         error_symbol = "[ & ](bold red)";
         success_symbol = "[ & ](bold green)";
