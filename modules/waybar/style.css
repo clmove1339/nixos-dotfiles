@@ -27,6 +27,22 @@ window#waybar {
     border-bottom: 2px solid transparent;
 }
 
+#workspaces button:hover {
+    background: transparent;
+    box-shadow: none;
+    text-shadow: none;
+    font-weight: normal;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+}
+
+#workspaces button.active:hover {
+    background: #1e1e1e;
+    border-bottom: 2px solid #8ec028;
+}
+
+
 #workspaces button.active {
     background: #1e1e1e;
     border-bottom: 2px solid #8ec028;
