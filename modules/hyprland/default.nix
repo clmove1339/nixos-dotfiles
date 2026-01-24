@@ -76,8 +76,7 @@
           # Application launchers
           appBindings = [
             "SUPER, RETURN, exec, ghostty"
-            "SUPER, SPACE, exec, wofi --show drun"
-            "SUPER, W, exec, firefox"
+            "SUPER, SPACE, exec, rofi -show drun"
           ];
 
           # Window management

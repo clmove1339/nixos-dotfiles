@@ -8,6 +8,8 @@
 {
   imports = [ ./hardware-configuration.nix ];
 
+  documentation.nixos.enable = false;
+
   boot.kernelParams = [ "quiet" ];
   boot.initrd.verbose = false;
   boot.consoleLogLevel = 0;

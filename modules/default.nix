@@ -14,7 +14,6 @@
     ./hyprland
     ./waybar
 
-    ./wofi
     ./rofi
   ];
 
