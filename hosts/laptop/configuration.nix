@@ -8,15 +8,14 @@
 {
   imports = [ ./hardware-configuration.nix ];
 
-  boot.kernelParams = [
-    "quiet"
-    "splash"
-    "tsc=reliable"
-  ];
+  boot.kernelParams = [ "quiet" ];
+  boot.initrd.verbose = false;
+  boot.consoleLogLevel = 0;
 
+  boot.loader.timeout = 0;
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages = pkgs.linuxPackages_zen;
 
   networking.hostName = "laptop";
   networking.wireless.enable = false;
@@ -56,12 +55,11 @@
   programs.hyprland = {
     enable = true;
     xwayland.enable = true;
-    withUWSM = true;
   };
 
   services.upower.enable = true;
 
-  services.displayManager.defaultSession = "hyprland-uwsm";
+  services.displayManager.defaultSession = "hyprland";
   services.greetd = {
     enable = true;
     settings = {
@@ -71,8 +69,6 @@
       };
     };
   };
-
-  programs.uwsm.enable = true;
 
   security.rtkit.enable = true;
   services.pipewire = {
