@@ -9,10 +9,13 @@
   imports = [
     ./nix-format.nix
 
-    ./hyprland
     ./ghostty
+
+    ./hyprland
     ./waybar
+
     ./wofi
+    ./rofi
   ];
 
   services.mako = {
