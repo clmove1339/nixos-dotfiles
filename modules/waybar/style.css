@@ -19,7 +19,6 @@
 tooltip {
     background: #1e1e1e;
     border: 1px solid #595959;
-    border-radius: 8px;
 }
 
 /* --- Module Spacing (The "Island" Look) --- */
@@ -46,7 +45,6 @@ tooltip {
     padding: 0px 12px;
     margin: 0 4px;
     border: 2px solid #595959;
-    border-radius: 8px;
     /* Smooth rounded corners */
     transition: all 0.3s cubic-bezier(.55, -0.68, .48, 1.682);
 }
