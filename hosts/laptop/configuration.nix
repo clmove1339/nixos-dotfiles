@@ -34,6 +34,7 @@
     xwayland.enable = true;
     withUWSM = true;
   };
+
   services.displayManager.defaultSession = "hyprland-uwsm";
   services.greetd = {
     enable = true;
@@ -44,10 +45,20 @@
       };
     };
   };
+
   programs.uwsm.enable = true;
 
-  environment.systemPackages = with pkgs; [
-  ];
+  security.rtkit.enable = true;
+
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
+    jack.enable = true;
+  };
+
+  environment.systemPackages = with pkgs; [ ];
 
   services.openssh.enable = true;
 
