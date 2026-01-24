@@ -7,14 +7,20 @@
 
 {
   imports = [ ./hardware-configuration.nix ];
-
+  programs.dconf.enable = true;
   documentation.nixos.enable = false;
 
-  boot.kernelParams = [ "quiet" ];
+  boot.kernelParams = [
+    "quiet"
+    "tsc=reliable"
+    "i8042.nopnp"
+  ];
   boot.initrd.verbose = false;
-  boot.consoleLogLevel = 0;
+  boot.consoleLogLevel = 3;
 
-  boot.loader.timeout = 0;
+  security.rtkit.enable = true;
+
+  boot.loader.timeout = 3;
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.kernelPackages = pkgs.linuxPackages_zen;
@@ -43,21 +49,16 @@
       pkgs.xdg-desktop-portal-hyprland
       pkgs.xdg-desktop-portal-gtk
     ];
-    config.common.default = [
-      "hyprland"
-      "gtk"
-    ];
+    config = {
+      common.default = [ "gtk" ];
+      hyprland.default = [
+        "hyprland"
+        "gtk"
+      ];
+    };
   };
-
   programs.zsh.enable = true;
-  programs.hyprland = {
-    enable = true;
-    xwayland.enable = true;
-  };
 
-  services.upower.enable = true;
-
-  services.displayManager.defaultSession = "hyprland";
   services.greetd = {
     enable = true;
     settings = {
@@ -85,16 +86,6 @@
     TTYVTDisallocate = true;
   };
 
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-    jack.enable = true;
-    wireplumber.enable = true;
-  };
-
   environment.systemPackages = with pkgs; [ ];
 
   services.openssh.enable = true;
@@ -103,5 +94,6 @@
     "nix-command"
     "flakes"
   ];
+
   system.stateVersion = "25.11";
 }
