@@ -1,5 +1,4 @@
 * {
-    /* Global variables to match your colors */
     bg-col:  #1e1e1e;
     bg-hover: #262626;
     fg-col:  #ffffff;
@@ -34,13 +33,9 @@ inputbar {
     border-color: @border-col;
 }
 
-/* Logic for the "focus" color change in input */
 inputbar {
     border-color: @border-col;
 }
-
-/* Rofi doesn't have a pseudo-class for 'input:focus',
-   so the border stays the border-col or accent color. */
 
 entry {
     padding: 5px;
@@ -71,10 +66,10 @@ element-text {
 }
 
 element selected {
-    background-color: @bg-col; /* Matches your entry:selected */
-    text-color: @accent;        /* Matches your text:selected */
+    background-color: @bg-col;
+    text-color: @accent;
 }
 
 element hover {
-    background-color: @bg-hover; /* Matches your entry:hover */
+    background-color: @bg-hover;
 }
