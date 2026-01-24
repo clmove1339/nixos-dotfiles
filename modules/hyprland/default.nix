@@ -1,14 +1,29 @@
+{ lib, ... }:
+let
+  modifier = "SUPER";
+  terminal = "ghostty";
+  menu = "rofi -show drun";
+
+  # Helper to generate directional bindings for both arrows and vim keys
+  # directions = { key = direction; ... }
+  directions = {
+    left = "l";
+    right = "r";
+    up = "u";
+    down = "d";
+  };
+in
 {
   wayland.windowManager.hyprland = {
     enable = true;
     xwayland.enable = true;
 
     settings = {
+      "$mod" = modifier;
+
       exec-once = [ "waybar" ];
 
-      monitor = [
-        "eDP-1,1920x1200,auto,1"
-      ];
+      monitor = [ "eDP-1,1920x1200,auto,1" ];
 
       general = {
         gaps_out = 10;
@@ -20,132 +35,66 @@
 
       decoration = {
         rounding = 0;
-
-        active_opacity = 1.0;
-        inactive_opacity = 1.0;
-        fullscreen_opacity = 1.0;
-
-        shadow = {
-          enabled = false;
-        };
-
-        blur = {
-          enabled = false;
-        };
+        shadow.enabled = false;
+        blur.enabled = false;
       };
 
-      animations = {
-        enabled = false;
-      };
+      animations.enabled = false;
 
-      cursor = {
-        no_hardware_cursors = true;
-      };
+      cursor.no_hardware_cursors = false;
 
       misc = {
         disable_hyprland_logo = true;
+        disable_splash_rendering = true;
+        force_default_wallpaper = 0;
       };
 
       input = {
         kb_layout = "us,ru";
-        kb_variant = ",";
         kb_options = "grp:alt_shift_toggle";
         follow_mouse = 1;
         sensitivity = 0;
       };
 
-      # Key bindings
-      bind =
-        let
-          # Workspace bindings
-          workspaceBindings = builtins.concatLists (
-            map (
-              n:
-              let
-                workspace = if n == 0 then 10 else n;
-              in
-              [
-                "SUPER, ${toString n}, workspace, ${toString workspace}"
-                "SUPER SHIFT, ${toString n}, movetoworkspace, ${toString workspace}"
-              ]
-            ) (builtins.genList (n: n) 10)
-          );
+      bind = [
+        # General
+        "$mod, RETURN, exec, ${terminal}"
+        "$mod, SPACE, exec, ${menu}"
+        "$mod, C, killactive,"
+        "$mod, M, exit,"
+        "$mod, V, togglefloating,"
+        "$mod, F, fullscreen,"
 
-          # Application launchers
-          appBindings = [
-            "SUPER, RETURN, exec, ghostty"
-            "SUPER, SPACE, exec, rofi -show drun"
-          ];
+        # Special Workspace logic (0 -> 10)
+        (builtins.concatLists (builtins.genList (x:
+          let
+            ws = let c = (x + 1) / 10; in toString (x + 1 - (c * 10)); # Maps 0-9 to 1-10
+            key = toString x;
+          in [
+            "$mod, ${key}, workspace, ${ws}"
+            "$mod SHIFT, ${key}, movetoworkspace, ${ws}"
+          ]
+        ) 10))
 
-          # Window management
-          windowBindings = [
-            "SUPER, C, killactive,"
-            "SUPER, M, exit,"
-            "SUPER, V, togglefloating,"
-            "SUPER, F, fullscreen,"
-          ];
+        # Mouse / Scroll workspace navigation
+        "$mod, mouse_down, workspace, e+1"
+        "$mod, mouse_up, workspace, e-1"
+        "$mod CTRL, left, workspace, -1"
+        "$mod CTRL, right, workspace, +1"
+      ]
+      ++ (lib.mapAttrsToList (key: dir: "$mod, ${key}, movefocus, ${dir}") directions)
+      ++ (lib.mapAttrsToList (key: dir: "$mod SHIFT, ${key}, movewindow, ${dir}") directions)
+      ++ (lib.mapAttrsToList (key: dir:
+          let
+            res = if dir == "l" then "-20 0" else if dir == "r" then "20 0"
+                  else if dir == "u" then "0 -20" else "0 20";
+          in "$mod ALT, ${key}, resizeactive, ${res}") directions);
 
-          # Focus navigation
-          focusBindings = [
-            "SUPER, left, movefocus, l"
-            "SUPER, right, movefocus, r"
-            "SUPER, up, movefocus, u"
-            "SUPER, down, movefocus, d"
-            "SUPER, h, movefocus, l"
-            "SUPER, l, movefocus, r"
-            "SUPER, k, movefocus, u"
-            "SUPER, j, movefocus, d"
-          ];
-
-          # Workspace navigation
-          workspaceNavBindings = [
-            "SUPER, mouse_down, workspace, e+1"
-            "SUPER, mouse_up, workspace, e-1"
-            "SUPER CTRL, left, workspace, -1"
-            "SUPER CTRL, right, workspace, +1"
-            "SUPER ALT, left, workspace, -1"
-            "SUPER ALT, right, workspace, +1"
-          ];
-
-          # Window movement
-          moveBindings = [
-            "SUPER SHIFT, left, movewindow, l"
-            "SUPER SHIFT, right, movewindow, r"
-            "SUPER SHIFT, up, movewindow, u"
-            "SUPER SHIFT, down, movewindow, d"
-            "SUPER SHIFT, h, movewindow, l"
-            "SUPER SHIFT, l, movewindow, r"
-            "SUPER SHIFT, k, movewindow, u"
-            "SUPER SHIFT, j, movewindow, d"
-          ];
-
-          # Window resizing
-          resizeBindings = [
-            "SUPER CTRL, left, resizeactive, -20 0"
-            "SUPER CTRL, right, resizeactive, 20 0"
-            "SUPER CTRL, up, resizeactive, 0 -20"
-            "SUPER CTRL, down, resizeactive, 0 20"
-            "SUPER CTRL, h, resizeactive, -20 0"
-            "SUPER CTRL, l, resizeactive, 20 0"
-            "SUPER CTRL, k, resizeactive, 0 -20"
-            "SUPER CTRL, j, resizeactive, 0 20"
-          ];
-        in
-        workspaceBindings
-        ++ appBindings
-        ++ windowBindings
-        ++ focusBindings
-        ++ workspaceNavBindings
-        ++ moveBindings
-        ++ resizeBindings;
-
-      # Mouse bindings
       bindm = [
-        "SUPER, mouse:272, movewindow"
-        "SUPER, mouse:273, resizewindow"
+        "$mod, mouse:272, movewindow"
+        "$mod, mouse:273, resizewindow"
       ];
 
-      # Window rules
       windowrule = [
         "suppressevent maximize, class:.*"
         "nofocus,class:^$,title:^$,xwayland:1,floating:1,fullscreen:0,pinned:0"
