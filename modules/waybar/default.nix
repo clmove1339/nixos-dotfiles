@@ -22,7 +22,7 @@
         ];
         modules-center = [ "clock" ];
         modules-right = [
-           # "mpris"
+          # "mpris"
           "network"
           "pulseaudio"
           "battery"

@@ -18,6 +18,12 @@
     ./rofi
   ];
 
+dconf.settings = {
+    "org/gnome/desktop/interface" = {
+      color-scheme = "prefer-dark";
+    };
+  };
+
   services.mako = {
     enable = true;
 
@@ -54,15 +60,24 @@
 
   gtk = {
     enable = true;
+    theme = {
+      name = "Adwaita-dark";
+      package = pkgs.gnome-themes-extra;
+    };
+    iconTheme = {
+      name = "Adwaita";
+      package = pkgs.adwaita-icon-theme;
+    };
     font = {
       name = "JetBrainsMono Nerd Font";
-      size = 11;
+      size = 12;
     };
   };
 
   qt = {
     enable = true;
     platformTheme.name = "gtk";
+    style.name = "adwaita-dark";
   };
 
   home.packages = with pkgs; [
