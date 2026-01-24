@@ -6,7 +6,6 @@
 }:
 
 {
-
   imports = [
     ./nix-format.nix
 
@@ -55,6 +54,10 @@
   ];
 
   programs.home-manager.enable = true;
+
+  programs.starship = {
+    enable = true;
+  };
 
   programs.git = {
     enable = true;
