@@ -57,6 +57,33 @@
 
   programs.starship = {
     enable = true;
+    settings = {
+      hostname = {
+        format = "[$ssh_symbol$hostname]($style) ";
+        ssh_only = false;
+        style = "bold purple";
+      };
+
+      username = {
+        format = "[$user]($style)@";
+        show_always = true;
+        style_user = "bold yellow";
+      };
+
+      directory = {
+        read_only = " 🔒";
+        truncation_symbol = "…/";
+      };
+
+      character = {
+        error_symbol = "[ & ](bold red)";
+        success_symbol = "[ & ](bold green)";
+      };
+
+      battery = {
+        disabled = true;
+      };
+    };
   };
 
   programs.git = {
