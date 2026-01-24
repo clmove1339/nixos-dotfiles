@@ -10,6 +10,16 @@ let
     "up" = "u";
     "down" = "d";
   };
+
+  cycle_ws = pkgs.writeShellScript "cycle_ws" ''
+    ID=$(hyprctl activeworkspace -j | jq '.id')
+    if [ "$1" = "+1" ]; then
+      NEXT=$(( (ID % 10) + 1 ))
+    else
+      NEXT=$(( (ID - 2 + 10) % 10 + 1 ))
+    fi
+    hyprctl dispatch workspace $NEXT
+  '';
 in
 {
   wayland.windowManager.hyprland = {
@@ -54,6 +64,15 @@ in
         sensitivity = 0;
       };
 
+      # Resize Repeat Fix
+      binde = lib.flatten [
+        (lib.mapAttrsToList (key: dir:
+          let
+            res = if dir == "l" then "-20 0" else if dir == "r" then "20 0"
+                  else if dir == "u" then "0 -20" else "0 20";
+          in "$mod ALT, ${key}, resizeactive, ${res}") directions)
+      ];
+
       bind = lib.flatten [
         "$mod, RETURN, exec, ${terminal}"
         "$mod, SPACE, exec, ${menu}"
@@ -62,12 +81,10 @@ in
         "$mod, V, togglefloating,"
         "$mod, F, fullscreen,"
 
-        "$mod, mouse_down, workspace, e+1"
-        "$mod, mouse_up, workspace, e-1"
-        "$mod CTRL, left, workspace, -1"
-        "$mod CTRL, right, workspace, +1"
+        "$mod ALT, right, exec, ${cycle_ws} +1"
+        "$mod ALT, left, exec, ${cycle_ws} -1"
 
-        # Generate Workspace Bindings (Key 1-9 -> WS 1-9, Key 0 -> WS 10)
+        # Generate Workspace Bindings
         (map
           (
             n:
@@ -79,35 +96,13 @@ in
               "$mod, ${key}, workspace, ${ws}"
               "$mod SHIFT, ${key}, movetoworkspace, ${ws}"
             ]
-          )
-          [
-            1
-            2
-            3
-            4
-            5
-            6
-            7
-            8
-            9
-            0
-          ]
+          ) (builtins.genList (n: n) 10)
         )
 
-        # Directional Bindings (Focus, Move, Resize)
+        # Directional Bindings (Focus, Move)
         (lib.mapAttrsToList (key: dir: [
           "$mod, ${key}, movefocus, ${dir}"
           "$mod SHIFT, ${key}, movewindow, ${dir}"
-          "$mod ALT, ${key}, resizeactive, ${
-            if dir == "l" then
-              "-20 0"
-            else if dir == "r" then
-              "20 0"
-            else if dir == "u" then
-              "0 -20"
-            else
-              "0 20"
-          }"
         ]) directions)
       ];
 
