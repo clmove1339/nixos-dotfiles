@@ -46,10 +46,9 @@
 
   home.pointerCursor = {
     gtk.enable = true;
-    hyprcursor.enable = true;
     package = pkgs.bibata-cursors;
     name = "Bibata-Modern-Classic";
-    size = 16;
+    size = 24;
   };
 
   gtk = {
@@ -120,23 +119,27 @@
     shellAliases = {
       ff = "fastfetch";
 
-      ls = "${pkgs.eza}/bin/eza --icons --group-directories-first --git";
-      ll = "ls -l";
-      la = "ls -la";
+      l = "${pkgs.eza}/bin/eza --icons --group-directories-first --git";
+      ls = "l";
+      ll = "l -lh";
+      la = "l -a";
+      lt = "l --tree";
 
       mkdir = "mkdir -pv";
       cp = "cp -iv";
       mv = "mv -iv";
       rm = "rm -Iv";
+      cat = "${pkgs.bat}/bin/bat --style=plain --paging=never";
+      grep = "grep --color=auto";
+      diff = "diff --color=auto";
       wget = "wget -c";
-
-      cat = "${pkgs.bat}/bin/bat --paging=never";
 
       ".." = "cd ..";
       "~" = "cd ~";
 
-      nix-sync = "sudo nixos-rebuild switch --flake ~/nixos-dotfiles";
-      nix-clean = "sudo nix-collect-garbage -d";
+      nix-switch = "sudo nixos-rebuild switch --flake ~/nixos-dotfiles";
+      nix-test = "sudo nixos-rebuild test --flake ~/nixos-dotfiles";
+      nix-clean = "sudo nix-collect-garbage -d && nix-store --optimize";
     };
   };
 
