@@ -6,8 +6,8 @@
       ipc = "on";
       splash = false;
 
-      preload = [ "~/nixos-dotfiles/modules/hyprpaper/wallpaper.png" ];
-      wallpaper = [ ",~/nixos-dotfiles/modules/hyprpaper/wallpaper.png" ];
+      preload = [ "${./wallpaper.png}" ]; 
+      wallpaper = [ ",${./wallpaper.png}" ];
     };
   };
 }
