@@ -7,8 +7,8 @@
     style = ./style.css;
 
     settings = {
-      width = 600;
-      height = 400;
+      width = 400;
+      height = 300;
       location = "center";
       show = "drun";
       prompt = "Search...";
@@ -17,11 +17,8 @@
       no_actions = true;
       halign = "fill";
       orientation = "vertical";
-      content_halign = "fill";
+      content_type = "application/x-executable";
       insensitive = true;
-      allow_images = true;
-      image_size = 24;
-      gtk_dark = true;
     };
   };
 }

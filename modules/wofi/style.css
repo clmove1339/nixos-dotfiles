@@ -1,5 +1,6 @@
 * {
     box-shadow: none;
+    outline: none;
     text-shadow: none;
     border: none;
     border-radius: 0px;
@@ -48,8 +49,7 @@ window {
 }
 
 #entry:selected {
-    background-color: #1e1e1e;
-    border-bottom: 2px solid #8ec028;
+    background: #1e1e1e;
 }
 
 #text:selected {
