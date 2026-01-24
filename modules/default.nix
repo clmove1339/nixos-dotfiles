@@ -124,7 +124,16 @@
       ll = "ls -l";
       la = "ls -la";
 
-      cat = "${pkgs.bat}/bin/bat";
+      mkdir = "mkdir -pv";
+      cp = "cp -iv";
+      mv = "mv -iv";
+      rm = "rm -Iv";
+      wget = "wget -c";
+
+      cat = "${pkgs.bat}/bin/bat --paging=never";
+
+      ".." = "cd ..";
+      "~" = "cd ~";
 
       nix-sync = "sudo nixos-rebuild switch --flake ~/nixos-dotfiles";
       nix-clean = "sudo nix-collect-garbage -d";
