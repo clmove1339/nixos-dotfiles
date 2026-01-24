@@ -1,36 +1,40 @@
-/* --- Global Styles --- */
 * {
-    font-family: "JetBrains Mono Nerd Font", "JetBrains Mono", monospace;
-    font-size: 13px;
-    font-weight: bold;
+    box-shadow: none;
+    text-shadow: none;
+
     border: none;
-    border-radius: 0;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: none;
+    border-radius: 0px;
+
+    font-family: "JetBrains Mono";
+    font-size: 12pt;
+    font-weight: bold;
+
     min-height: 0;
+
+    transition: none;
+    animation: none;
 }
 
-/* Base Waybar - transparent background allows for "floating" modules */
 #waybar {
     background: transparent;
-    color: #ebdbb2;
-    /* Gruvbox light text */
+    color: #ffffff;
 }
 
-/* Tooltip styling */
 tooltip {
     background: #1e1e1e;
     border: 1px solid #595959;
 }
 
-/* --- Module Spacing (The "Island" Look) --- */
 .modules-left,
 .modules-center,
 .modules-right {
-    margin: 5px 5px;
-    /* Adds space from screen edge */
+    margin: 0px 5px;
 }
 
-/* Generic module style */
-#workspaces,
 #window,
 #clock,
 #battery,
@@ -40,48 +44,41 @@ tooltip {
 #memory,
 #tray,
 #custom-media {
+    padding: 0px 15px;
     background: #1e1e1e;
     color: #ffffff;
-    padding: 0px 12px;
-    margin: 0 4px;
     border: 2px solid #595959;
-    /* Smooth rounded corners */
-    transition: all 0.3s cubic-bezier(.55, -0.68, .48, 1.682);
 }
 
-/* --- Hyprland Window Style --- */
 #window {
     color: #8ec028;
-    /* Focused window title color */
-    border-color: #8ec028;
-    background: rgba(30, 30, 30, 0.8);
-    font-style: italic;
-    /* This makes it disappear when no window is open */
-    margin-left: 10px;
-    margin-right: 10px;
+    border-bottom: 2px solid #8ec028;
 }
 
-/* Style for when no window is focused */
 window#waybar.empty #window {
     background: transparent;
     border: none;
 }
 
-/* --- Workspaces --- */
 #workspaces {
-    padding: 0;
-    /* Remove internal padding to handle button spacing */
+    background: #1e1e1e;
+    border-top: 2px solid #595959;
+    border-left: 2px solid #595959;
+    border-right: 2px solid #595959;
 }
 
 #workspaces button {
-    color: #7a7a7a;
-    padding: 0 8px;
-    border-bottom: 3px solid transparent;
+    color: #ffffff;
+    border-bottom: 2px solid #595959;
+}
+
+#workspaces button.empty {
+    color: rgba(255, 255, 255, 0.25);
 }
 
 #workspaces button.active {
     color: #8ec028;
-    border-bottom: 3px solid #8ec028;
+    border-bottom: 2px solid #8ec028;
 }
 
 #workspaces button.urgent {
@@ -89,22 +86,15 @@ window#waybar.empty #window {
     color: white;
 }
 
-#workspaces button:hover {
-    background: rgba(255, 255, 255, 0.1);
-    box-shadow: inherit;
-    text-shadow: inherit;
-}
-
-/* --- Specialized Module Colors --- */
 #clock {
     color: #8ec028;
-    border-color: #8ec028;
+    border-bottom: 2px solid #8ec028;
 }
 
 #battery.charging,
 #battery.plugged {
     color: #8ec028;
-    border-color: #8ec028;
+    border-bottom: 2px solid #8ec028;
 }
 
 #battery.critical:not(.charging) {
@@ -124,7 +114,6 @@ window#waybar.empty #window {
     border-color: #f53c3c;
 }
 
-/* --- Animations --- */
 @keyframes blink {
     to {
         background-color: #1e1e1e;
