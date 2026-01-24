@@ -4,6 +4,8 @@
     xwayland.enable = true;
 
     settings = {
+      exec-once = [ "waybar" ];
+
       monitor = [
         "eDP-1,1920x1200,auto,1"
       ];
@@ -69,7 +71,7 @@
 
           # Application launchers
           appBindings = [
-            "SUPER, RETURN, exec, kitty"
+            "SUPER, RETURN, exec, ghostty"
             "SUPER, SPACE, exec, wofi --show drun"
             "SUPER, W, exec, firefox"
           ];

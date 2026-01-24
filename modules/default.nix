@@ -11,7 +11,8 @@
     ./nix-format.nix
 
     ./hyprland
-    ./kitty
+    # ./kitty
+    ./ghostty
     ./waybar
     ./wofi
   ];
