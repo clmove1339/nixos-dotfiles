@@ -12,6 +12,31 @@ let
     "down" = "d";
   };
 
+  cycle-workspace = pkgs.writeShellApplication {
+    name = "cycle-workspace";
+    runtimeInputs = [
+      pkgs.jq
+      pkgs.hyprland
+    ];
+    text = ''
+      # Get the current workspace ID
+      current=$(hyprctl activeworkspace -j | jq '.id')
+
+      # Calculate next workspace (1-10)
+      if [ "$1" = "next" ]; then
+          # (current % 10) + 1
+          # 1->2, 9->10, 10->1
+          next=$(( (current % 10) + 1 ))
+      else
+          # ((current - 2 + 10) % 10) + 1
+          # 1->10, 2->1, 10->9
+          next=$(( (current - 2 + 10) % 10 + 1 ))
+      fi
+
+      hyprctl dispatch workspace "$next"
+    '';
+  };
+
   cycle_ws = pkgs.writeShellScript "cycle_ws" ''
     ID=$(hyprctl activeworkspace -j | jq '.id')
     if [ "$1" = "+1" ]; then
@@ -92,8 +117,11 @@ in
         "$mod, V, togglefloating,"
         "$mod, F, fullscreen,"
 
-        "$mod CTRL, right, exec, ${cycle_ws} +1"
-        "$mod CTRL, left, exec, ${cycle_ws} -1"
+        "$mod CTRL, Right, exec, cycle-workspace next"
+        "$mod CTRL, Left, exec, cycle-workspace prev"
+
+        #"$mod CTRL, right, exec, ${cycle_ws} +1"
+        # "$mod CTRL, left, exec, ${cycle_ws} -1"
 
         # Generate Workspace Bindings
         (map (
