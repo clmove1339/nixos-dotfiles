@@ -1,6 +1,8 @@
 { config, pkgs, ... }:
 
 {
+  services.playerctld.enable = true;
+
   programs.waybar = {
     enable = true;
     systemd.enable = false;
@@ -20,6 +22,7 @@
         ];
         modules-center = [ "clock" ];
         modules-right = [
+          "mpris"
           "network"
           "pulseaudio"
           "battery"
@@ -70,6 +73,10 @@
           on-click = "pavucontrol";
         };
 
+        "tray" = {
+          spacing = 10;
+        };
+
         "battery" = {
           states = {
             warning = 30;
@@ -79,6 +86,20 @@
           format-charging = "{capacity}% ";
           format-plugged = "{capacity}% ";
           format-alt = "{time}";
+        };
+
+        "mpris" = {
+          format = "{status_icon} {title}";
+
+          status-icons = {
+            playing = "󰝚";
+            paused = "<span color='#b4befe'>󰏤</span>";
+            stopped = "<span color='#f38ba8'>󰓛</span>";
+          };
+
+          tooltip-format = "{title} • {artist}";
+
+          interval = 1;
         };
       };
     };

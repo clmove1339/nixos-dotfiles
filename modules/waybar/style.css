@@ -32,7 +32,7 @@ tooltip {
 .modules-left,
 .modules-center,
 .modules-right {
-    margin: 0px 5px;
+    margin: 0px 10px;
 }
 
 #window,
@@ -42,6 +42,7 @@ tooltip {
 #network,
 #cpu,
 #memory,
+#mpris,
 #tray,
 #custom-media {
     padding: 0px 15px;

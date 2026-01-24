@@ -120,9 +120,6 @@ in
         "$mod CTRL, right, exec, ${cycle-workspace}/bin/cycle-workspace next"
         "$mod CTRL, left, exec, ${cycle-workspace}/bin/cycle-workspace prev"
 
-        #"$mod CTRL, right, exec, ${cycle_ws} +1"
-        # "$mod CTRL, left, exec, ${cycle_ws} -1"
-
         # Generate Workspace Bindings
         (map (
           n:
@@ -151,8 +148,6 @@ in
       windowrule = [
         "suppressevent maximize, class:.*"
         "nofocus,class:^$,title:^$,xwayland:1,floating:1,fullscreen:0,pinned:0"
-        "float, class:feh"
-        "move 77% 4%, class:feh"
       ];
     };
   };
