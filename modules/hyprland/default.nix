@@ -15,7 +15,7 @@
         gaps_in = 5;
         border_size = 2;
         "col.active_border" = "rgba(8ec028ff)";
-        "col.inactive_border" = "rgba(595959aa)";
+        "col.inactive_border" = "rgba(595959ff)";
       };
 
       decoration = {
@@ -24,6 +24,10 @@
         active_opacity = 1.0;
         inactive_opacity = 1.0;
         fullscreen_opacity = 1.0;
+
+        shadow = {
+          enabled = false;
+        };
 
         blur = {
           enabled = false;

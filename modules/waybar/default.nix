@@ -11,8 +11,9 @@
       mainBar = {
         layer = "top";
         position = "top";
-        height = 30;
-        spacing = 4;
+        margin-top = 10;
+        height = 36;
+        spacing = 5;
         modules-left = [ "hyprland/workspaces" ];
         modules-center = [ "clock" ];
         modules-right = [
