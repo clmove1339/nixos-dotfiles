@@ -1,7 +1,13 @@
-# System Modules
+<div align="center">
 
-This directory contains system-level configuration modules.
+# ⚙️ System Modules
 
-## Contents
+*System-level configuration modules*
 
-- `nix-format.nix` - Nix formatting utility script
+</div>
+
+## 📁 Contents
+
+<ul>
+<li><code>nix-format.nix</code> - <strong>Nix formatting</strong> utility script</li>
+</ul>

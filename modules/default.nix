@@ -15,6 +15,7 @@
     ./desktop/hyprland
     ./desktop/hyprpaper
     ./desktop/waybar
+    ./desktop/wlogout
   ];
 
   dconf.settings = {
@@ -81,7 +82,7 @@
 
   home.packages = with pkgs; [
     libnotify
-    
+
     qwen-code # vibe-coding
 
     firefox

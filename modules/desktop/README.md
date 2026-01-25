@@ -1,9 +1,16 @@
-# Desktop Environment Modules
+<div align="center">
 
-This directory contains modules related to the desktop environment and window management.
+# 🖥️ Desktop Environment Modules
 
-## Contents
+*Configurations for desktop environment and window management*
 
-- `hyprland/` - Hyprland window manager configuration
-- `hyprpaper/` - Hyprpaper wallpaper daemon configuration
-- `waybar/` - Waybar status bar configuration
+</div>
+
+## 📁 Contents
+
+<ul>
+<li><code>hyprland/</code> - <strong>Hyprland</strong> window manager configuration</li>
+<li><code>hyprpaper/</code> - <strong>Hyprpaper</strong> wallpaper daemon configuration</li>
+<li><code>waybar/</code> - <strong>Waybar</strong> status bar configuration</li>
+<li><code>wlogout/</code> - <strong>Wlogout</strong> session management configuration</li>
+</ul>

@@ -1,3 +1,12 @@
+/* Color definitions for consistent theming */
+@define-color bg-primary #1e1e1e;
+@define-color bg-secondary #262626;
+@define-color fg-primary #ffffff;
+@define-color accent #8ec028;
+@define-color border-color #595959;
+@define-color error #f53c3c;
+@define-color warning #f39c12;
+
 * {
     box-shadow: none;
     text-shadow: none;
@@ -21,12 +30,12 @@
 
 #waybar {
     background: transparent;
-    color: #ffffff;
+    color: @fg-primary;
 }
 
 tooltip {
-    background: #1e1e1e;
-    border: 1px solid #595959;
+    background: @bg-primary;
+    border: 1px solid @border-color;
 }
 
 .modules-left,
@@ -47,14 +56,14 @@ tooltip {
 #custom-power,
 #custom-media {
     padding: 0px 15px;
-    background: #1e1e1e;
-    color: #ffffff;
-    border: 2px solid #595959;
+    background: @bg-primary;
+    color: @fg-primary;
+    border: 2px solid @border-color;
 }
 
 #window {
-    color: #8ec028;
-    border-bottom: 2px solid #8ec028;
+    color: @accent;
+    border-bottom: 2px solid @accent;
 }
 
 window#waybar.empty #window {
@@ -63,15 +72,15 @@ window#waybar.empty #window {
 }
 
 #workspaces {
-    background: #1e1e1e;
-    border-top: 2px solid #595959;
-    border-left: 2px solid #595959;
-    border-right: 2px solid #595959;
+    background: @bg-primary;
+    border-top: 2px solid @border-color;
+    border-left: 2px solid @border-color;
+    border-right: 2px solid @border-color;
 }
 
 #workspaces button {
-    color: #ffffff;
-    border-bottom: 2px solid #595959;
+    color: @fg-primary;
+    border-bottom: 2px solid @border-color;
 }
 
 #workspaces button.empty {
@@ -79,41 +88,75 @@ window#waybar.empty #window {
 }
 
 #workspaces button.active {
-    color: #8ec028;
-    border-bottom: 2px solid #8ec028;
+    color: @accent;
+    border-bottom: 2px solid @accent;
 }
 
 #workspaces button.urgent {
-    background-color: #eb4d4b;
+    background-color: @error;
     color: white;
 }
 
 #clock {
-    color: #8ec028;
-    border-bottom: 2px solid #8ec028;
+    color: @accent;
+    border-bottom: 2px solid @accent;
+}
+
+/* Styling for slider modules to match other waybar elements */
+#pulseaudio.slider,
+#backlight.slider {
+    min-height: 20px;
+    min-width: 180px;
+    margin: 5px 10px;
+    opacity: 0.8;
+}
+
+#pulseaudio trough,
+#backlight trough {
+    border: 2px solid @border-color;
+    border-radius: 0px;
+    background-color: @bg-primary;
+    min-height: 20px;
+    min-width: 180px;
+}
+
+#pulseaudio highlight,
+#backlight highlight {
+    border-radius: 0px;
+    background-color: @accent; /* Using accent color */
+    min-height: 20px;
+}
+
+/* Styling for the grouped modules to match other module styles */
+#group-audio,
+#group-brightness {
+    padding: 0px 15px;
+    background: @bg-primary;
+    color: @fg-primary;
+    border: 2px solid @border-color;
 }
 
 #battery.charging,
 #battery.plugged {
-    color: #8ec028;
-    border-bottom: 2px solid #8ec028;
+    color: @accent;
+    border-bottom: 2px solid @accent;
 }
 
 #battery.critical:not(.charging) {
-    background-color: #f53c3c;
-    border-color: #f53c3c;
-    color: #ffffff;
+    background-color: @error;
+    border-color: @error;
+    color: @fg-primary;
     animation: blink 0.5s steps(12) infinite alternate;
 }
 
 #pulseaudio.muted {
     color: #7a7a7a;
-    border-color: #595959;
+    border-color: @border-color;
 }
 
 #network.disconnected {
-    background-color: #f53c3c;
-    border-color: #f53c3c;
+    background-color: @error;
+    border-color: @error;
 }
 
 @keyframes blink {

@@ -30,11 +30,11 @@
           "custom/power"
         ];
 
-"custom/power" = {
-  format = "<span size='13pt' font='Material Symbols Outlined'>power_settings_new</span>";
-  on-click = "wlogout --protocol layer-shell -b 2";
-  tooltip = false;
-};
+        "custom/power" = {
+          format = "<span size='13pt' font='Material Symbols Outlined'>power_settings_new</span>";
+          on-click = "wlogout --protocol layer-shell -b 2";
+          tooltip = false;
+        };
 
         "hyprland/workspaces" = {
           disable-scroll = true;
@@ -50,31 +50,40 @@
         };
 
         "network" = {
-          format-wifi = "{essid}";
-          format-ethernet = "{ipaddr}/{cidr}";
-          format-linked = "{ifname} (No IP)";
-          format-disconnected = "Disconnected";
-          format-alt = "{ifname}: {ipaddr}/{cidr}";
+          format-icons = {
+            wifi = [
+              "<span size='13pt' font='Material Symbols Outlined'>network_wifi_1_bar</span>"
+              "<span size='13pt' font='Material Symbols Outlined'>network_wifi_2_bar</span>"
+              "<span size='13pt' font='Material Symbols Outlined'>network_wifi_3_bar</span>"
+              "<span size='13pt' font='Material Symbols Outlined'>signal_wifi_4_bar</span>"
+            ];
+            ethernet = "<span size='13pt' font='Material Symbols Outlined'>lan</span>";
+            disabled = "<span size='13pt' font='Material Symbols Outlined'>signal_wifi_off</span>";
+            disconnected = "<span size='13pt' font='Material Symbols Outlined'>signal_wifi_bad</span>";
+          };
+          format-wifi = "{icon}";
+          format-ethernet = "{icon}";
+          format-disconnected = "{icon}";
+          format-disabled = "{icon}";
+          interval = 5;
+          tooltip-format = "{essid}\t{gwaddr}";
+          tooltip = true;
+          max-length = 20;
         };
 
         "pulseaudio" = {
-          format = "{volume}%";
-          format-bluetooth = "{volume}% {icon} {format_source}";
-          format-bluetooth-muted = " {icon} {format_source}";
-          format-muted = " {format_source}";
-          format-source = "{volume}% ";
-          format-source-muted = "";
+          interval = 2;
+          format = "{icon}";
+          format-muted = "<span size='14pt' font='Material Symbols Outlined'>volume_off</span>";
           format-icons = {
-            headphone = "";
-            hands-free = "";
-            headset = "";
-            phone = "";
-            portable = "";
-            car = "";
+            headPhone = "<span size='14pt' font='Material Symbols Outlined'>headphones</span>";
+            hands-free = "<span size='14pt' font='Material Symbols Outlined'>headset_mic</span>";
+            headset = "<span size='14pt' font='Material Symbols Outlined'>headphones</span>";
+            headset-muted = "<span size='14pt' font='Material Symbols Outlined'>headset_off</span>";
             default = [
-              ""
-              ""
-              ""
+              "<span size='14pt' font='Material Symbols Outlined'>volume_mute</span>"
+              "<span size='14pt' font='Material Symbols Outlined'>volume_down</span>"
+              "<span size='14pt' font='Material Symbols Outlined'>volume_up</span>"
             ];
           };
           on-click = "pavucontrol";
@@ -83,6 +92,7 @@
         "tray" = {
           spacing = 10;
         };
+
         "battery" = {
           interval = 5;
           states = {

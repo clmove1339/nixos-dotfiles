@@ -1,8 +1,14 @@
-# Application Modules
+<div align="center">
 
-This directory contains modules for various applications.
+# 📋 Application Modules
 
-## Contents
+*Configuration modules for various applications*
 
-- `ghostty/` - Ghostty terminal emulator configuration
-- `rofi/` - Rofi application launcher configuration
+</div>
+
+## 📁 Contents
+
+<ul>
+<li><code>ghostty/</code> - <strong>Ghostty</strong> terminal emulator configuration</li>
+<li><code>rofi/</code> - <strong>Rofi</strong> application launcher configuration</li>
+</ul>
