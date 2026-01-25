@@ -33,10 +33,6 @@ inputbar {
     border-color: @border-col;
 }
 
-inputbar {
-    border-color: @border-col;
-}
-
 entry {
     padding: 5px;
     text-color: @fg-col;
