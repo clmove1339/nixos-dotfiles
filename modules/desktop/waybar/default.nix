@@ -1,8 +1,6 @@
 { config, pkgs, ... }:
 
 {
-  services.playerctld.enable = true;
-
   programs.waybar = {
     enable = true;
     systemd.enable = false;
