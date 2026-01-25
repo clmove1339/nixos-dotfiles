@@ -7,15 +7,14 @@
 
 {
   imports = [
-    ./nix-format.nix
+    ./system/nix-format.nix
 
-    ./ghostty
+    ./apps/ghostty
+    ./apps/rofi
 
-    ./hyprland
-    ./hyprpaper
-    ./waybar
-
-    ./rofi
+    ./desktop/hyprland
+    ./desktop/hyprpaper
+    ./desktop/waybar
   ];
 
   dconf.settings = {
@@ -82,6 +81,8 @@
 
   home.packages = with pkgs; [
     libnotify
+    
+    qwen-code # vibe-coding
 
     firefox
     vesktop

@@ -1,0 +1,16 @@
+# Nix store paths
+/nix/store/
+
+# Temporary build files
+result
+*.drv
+
+# Editor files
+*.swp
+*~
+.vscode/
+.idea/
+
+# System files
+.DS_Store
+Thumbs.db
