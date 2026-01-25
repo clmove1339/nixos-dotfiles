@@ -163,6 +163,51 @@
 
   programs.fastfetch = {
     enable = true;
+    settings = {
+      logo = {
+        source = "nixos_small";
+        padding = {
+          top = 0;
+        };
+      };
+      display = {
+        separator = "  ";
+        color = {
+          keys = "magenta"; # Sets a default color for all keys
+        };
+      };
+      modules = [
+        "title"
+        "break"
+        {
+          type = "os";
+          key = "distro";
+          keyColor = "blue";
+        }
+        {
+          type = "kernel";
+          key = "kernel";
+          keyColor = "blue";
+        }
+        {
+          type = "packages";
+          format = "{}";
+          key = "pkgs  ";
+          keyColor = "blue";
+        }
+        {
+          type = "uptime";
+          format = "{2}h {3}m";
+          key = "uptime";
+          keyColor = "blue";
+        }
+        {
+          type = "memory";
+          key = "memory";
+          keyColor = "blue";
+        }
+      ];
+    };
   };
 
   programs.gh.enable = true;
