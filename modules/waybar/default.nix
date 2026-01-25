@@ -23,11 +23,18 @@
         modules-center = [ "clock" ];
         modules-right = [
           # "mpris"
+          "tray"
           "network"
           "pulseaudio"
           "battery"
-          "tray"
+          "custom/power"
         ];
+
+"custom/power" = {
+  format = "<span size='13pt' font='Material Symbols Outlined'>power_settings_new</span>";
+  on-click = "wlogout --protocol layer-shell -b 2";
+  tooltip = false;
+};
 
         "hyprland/workspaces" = {
           disable-scroll = true;
@@ -76,16 +83,29 @@
         "tray" = {
           spacing = 10;
         };
-
         "battery" = {
+          interval = 5;
           states = {
-            warning = 30;
-            critical = 15;
+            warning = 20;
+            critical = 10;
+            plugordie = 5;
           };
-          format = "{capacity}%";
-          format-charging = "{capacity}% ";
-          format-plugged = "{capacity}% ";
-          format-alt = "{time}";
+          format = "{icon}";
+          format-icons = [
+            "<span size='15pt' font='Material Symbols Outlined'>battery_android_0</span>"
+            "<span size='15pt' font='Material Symbols Outlined'>battery_android_1</span>"
+            "<span size='15pt' font='Material Symbols Outlined'>battery_android_2</span>"
+            "<span size='15pt' font='Material Symbols Outlined'>battery_android_3</span>"
+            "<span size='15pt' font='Material Symbols Outlined'>battery_android_4</span>"
+            "<span size='15pt' font='Material Symbols Outlined'>battery_android_5</span>"
+            "<span size='15pt' font='Material Symbols Outlined'>battery_android_6</span>"
+            "<span size='15pt' font='Material Symbols Outlined'>battery_android_full</span>"
+          ];
+          format-charging = "<span size='15pt' font='Material Symbols Outlined'>battery_android_bolt</span>";
+          format-plugged = "<span size='15pt' font='Material Symbols Outlined'>bolt</span>";
+          format-plugordie = "<span size='15pt' font='Material Symbols Outlined'>battery_android_alert</span>";
+          tooltip = true;
+          tooltip-format = "Charge: {capacity}%";
         };
 
         "mpris" = {

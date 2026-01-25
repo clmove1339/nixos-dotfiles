@@ -94,6 +94,7 @@
     jetbrains-mono
     noto-fonts-color-emoji
     nerd-fonts.symbols-only
+    material-symbols
   ];
 
   programs.home-manager.enable = true;
