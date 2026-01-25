@@ -17,17 +17,28 @@ let
     runtimeInputs = [
       pkgs.jq
       pkgs.hyprland
+      pkgs.coreutils
     ];
     text = ''
+      mapfile -t ids < <( (seq 1 5; hyprctl workspaces -j | jq '.[] | .id') | sort -nu )
       current=$(hyprctl activeworkspace -j | jq '.id')
+      length=''${#ids[@]}
+      index=0
+
+      for i in "''${!ids[@]}"; do
+        if [ "''${ids[$i]}" -eq "$current" ]; then
+          index=$i
+          break
+        fi
+      done
 
       if [ "$1" = "next" ]; then
-          next=$(( (current % 10) + 1 ))
+        next_index=$(( (index + 1) % length ))
       else
-          next=$(( (current - 2 + 10) % 10 + 1 ))
+        next_index=$(( (index - 1 + length) % length ))
       fi
 
-      hyprctl dispatch workspace "$next"
+      hyprctl dispatch workspace "''${ids[$next_index]}"
     '';
   };
 
@@ -50,6 +61,8 @@ in
       exec-once = [ "waybar" ];
 
       monitor = [ "eDP-1,1920x1200,auto,1" ];
+
+      workspace = (map (n: "${toString n},persistent:true") (lib.range 1 5));
 
       general = {
         gaps_out = 10;
