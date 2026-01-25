@@ -11,6 +11,16 @@
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
 
+  boot.kernelParams = [
+    "quiet"
+    "tsc=reliable"
+    "i8042.nopnp"
+  ];
+  boot.kernelPackages = pkgs.linuxPackages_zen;
+  boot.loader.timeout = 3;
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
+
   boot.initrd.availableKernelModules = [
     "xhci_pci"
     "nvme"
@@ -37,7 +47,6 @@
     { device = "/dev/disk/by-uuid/68377be9-2a02-40a7-bf1a-c82881ae1c70"; }
   ];
 
-  nixpkgs.config.allowUnfree = true;
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.enableAllFirmware = true;
   hardware.cpu.intel.updateMicrocode = true;

@@ -10,20 +10,10 @@
   programs.dconf.enable = true;
   documentation.nixos.enable = false;
 
-  boot.kernelParams = [
-    "quiet"
-    "tsc=reliable"
-    "i8042.nopnp"
-  ];
   boot.initrd.verbose = false;
   boot.consoleLogLevel = 3;
 
   security.rtkit.enable = true;
-
-  boot.loader.timeout = 3;
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-  boot.kernelPackages = pkgs.linuxPackages_zen;
 
   networking.hostName = "laptop";
   networking.wireless.enable = false;
@@ -89,6 +79,8 @@
     "nix-command"
     "flakes"
   ];
+
+  nixpkgs.config.allowUnfree = true;
 
   system.stateVersion = "25.11";
 }
