@@ -1,7 +1,7 @@
-      @define-color bg #1e1e1e;
-      @define-color fg #ffffff;
-      @define-color accent #8ec028;
-      @define-color border-color #595959;
+@define-color bg #1e1e1e;
+@define-color fg #ffffff;
+@define-color accent #8ec028;
+@define-color border-color #595959;
 
 
 * {
@@ -25,70 +25,74 @@
     animation: none;
 }
 
-      window {
-          background-color: rgba(30, 30, 30, 0.9);
-          font-family: "Material Symbols Outlined";
-          font-size: 14px;
-      }
+window {
+    background-color: rgba(30, 30, 30, 0.9);
+    font-family: "Material Symbols Outlined";
+    font-size: 14px;
+}
 
-      button {
-          color: @fg;
-          background-color: @bg;
-          border: 2px solid @border-color;
-          border-radius: 0px;
-          margin: 15px;
-          padding: 40px 40px 40px 40px;
-          font-size: 64px;
-          font-weight: bold;
-      }
+button {
+    color: @fg;
+    background-color: @bg;
+    border: 2px solid @border-color;
+    border-radius: 0px;
+    margin: 15px;
+    padding: 40px 40px 40px 40px;
+    font-size: 64px;
+    font-weight: bold;
+}
 
-      button:hover {
-          background-color: #262626;
-          border: 2px solid @accent;
-      }
+button:hover {
+    background-color: #262626;
+    border: 2px solid @accent;
+}
 
-      #shutdown {
-          color: #f53c3c; /* Red icon */
-          background-color: #2c2c2c;
-          border: 2px solid #595959;
-      }
+#shutdown {
+    color: #f53c3c;
+    background-color: #2c2c2c;
+    border: 2px solid #595959;
+}
 
-      #shutdown:focus {
-          border: 2px solid @accent;  /* 2px border on focus */
-      }
+#shutdown:focus {
+    border: 2px solid @accent;
+}
 
-      #reboot {
-          color: #3498db; /* Blue icon */
-          background-color: #2c2c2c;
-          border: 2px solid #595959;
-      }
-      #reboot:focus {
-          border: 2px solid @accent;  /* 2px border on focus */
-      }
+#reboot {
+    color: #3498db;
+    background-color: #2c2c2c;
+    border: 2px solid #595959;
+}
 
-      #logout {
-          color: #9b59b6; /* Purple icon */
-          background-color: #2c2c2c;
-          border: 2px solid #595959;
-      }
-      #logout:focus {
-          border: 2px solid @accent;  /* 2px border on focus */
-      }
+#reboot:focus {
+    border: 2px solid @accent;
+}
 
-      #suspend {
-          color: #f39c12; /* Orange icon */
-          background-color: #2c2c2c;
-          border: 2px solid #595959;
-      }
-      #suspend:focus {
-          border: 2px solid @accent;  /* 2px border on focus */
-      }
+#logout {
+    color: #9b59b6;
+    background-color: #2c2c2c;
+    border: 2px solid #595959;
+}
 
-      #cancel {
-          color: #7f8c8d; /* Gray icon */
-          background-color: #2c2c2c;
-          border: 2px solid #595959;
-      }
-      #cancel:focus {
-          border: 2px solid @accent;  /* 2px border on focus */
-      }
+#logout:focus {
+    border: 2px solid @accent;
+}
+
+#suspend {
+    color: #f39c12;
+    background-color: #2c2c2c;
+    border: 2px solid #595959;
+}
+
+#suspend:focus {
+    border: 2px solid @accent;
+}
+
+#cancel {
+    color: #7f8c8d;
+    background-color: #2c2c2c;
+    border: 2px solid #595959;
+}
+
+#cancel:focus {
+    border: 2px solid @accent;
+}

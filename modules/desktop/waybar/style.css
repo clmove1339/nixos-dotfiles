@@ -1,4 +1,3 @@
-/* Color definitions for consistent theming */
 @define-color bg-primary #1e1e1e;
 @define-color bg-secondary #262626;
 @define-color fg-primary #ffffff;
@@ -102,7 +101,6 @@ window#waybar.empty #window {
     border-bottom: 2px solid @accent;
 }
 
-/* Styling for slider modules to match other waybar elements */
 #pulseaudio.slider,
 #backlight.slider {
     min-height: 20px;
@@ -123,11 +121,10 @@ window#waybar.empty #window {
 #pulseaudio highlight,
 #backlight highlight {
     border-radius: 0px;
-    background-color: @accent; /* Using accent color */
+    background-color: @accent;
     min-height: 20px;
 }
 
-/* Styling for the grouped modules to match other module styles */
 #group-audio,
 #group-brightness {
     padding: 0px 15px;
