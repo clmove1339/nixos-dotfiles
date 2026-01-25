@@ -19,17 +19,11 @@ let
       pkgs.hyprland
     ];
     text = ''
-      # Get the current workspace ID
       current=$(hyprctl activeworkspace -j | jq '.id')
 
-      # Calculate next workspace (1-10)
       if [ "$1" = "next" ]; then
-          # (current % 10) + 1
-          # 1->2, 9->10, 10->1
           next=$(( (current % 10) + 1 ))
       else
-          # ((current - 2 + 10) % 10) + 1
-          # 1->10, 2->1, 10->9
           next=$(( (current - 2 + 10) % 10 + 1 ))
       fi
 
@@ -37,14 +31,12 @@ let
     '';
   };
 
-  cycle_ws = pkgs.writeShellScript "cycle_ws" ''
-    ID=$(hyprctl activeworkspace -j | jq '.id')
-    if [ "$1" = "+1" ]; then
-      NEXT=$(( (ID % 10) + 1 ))
+  power-menu = pkgs.writeShellScriptBin "power-menu" ''
+    if pgrep -x "wlogout" > /dev/null; then
+      pkill -x "wlogout"
     else
-      NEXT=$(( (ID - 2 + 10) % 10 + 1 ))
+      wlogout --protocol layer-shell -b 2
     fi
-    hyprctl dispatch workspace $NEXT
   '';
 in
 {
@@ -110,6 +102,8 @@ in
       ];
 
       bind = lib.flatten [
+        ", XF86PowerOff, exec, ${power-menu}/bin/power-menu"
+
         "$mod, RETURN, exec, ${terminal}"
         "$mod, SPACE, exec, ${menu}"
         "$mod, Q, killactive,"

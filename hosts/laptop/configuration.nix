@@ -9,6 +9,7 @@
   imports = [ ./hardware-configuration.nix ];
   programs.dconf.enable = true;
   documentation.nixos.enable = false;
+  services.logind.settings.Login.HandlePowerKey = "ignore";
 
   boot.initrd.verbose = false;
   boot.consoleLogLevel = 3;

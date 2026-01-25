@@ -3,11 +3,7 @@
 let
   file = builtins.readFile ./style.css;
 
-  style =
-    builtins.replaceStrings
-      [ "./icons" ]
-      [ "${./assets}" ]
-      file;
+  style = builtins.replaceStrings [ "./icons" ] [ "${./icons}" ] file;
 in
 {
   programs.wlogout = {
