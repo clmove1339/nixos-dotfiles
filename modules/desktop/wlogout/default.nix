@@ -1,14 +1,23 @@
 { config, pkgs, ... }:
 
+let
+  file = builtins.readFile ./style.css;
+
+  style =
+    builtins.replaceStrings
+      [ "./icons" ]
+      [ "${./assets}" ]
+      file;
+in
 {
   programs.wlogout = {
     enable = true;
 
-    style = ./style.css;
+    style = style;
 
     layout = [
       {
-        label = "logout";
+        label = "signout";
         action = "loginctl terminate-user $USER";
         text = "Sign out";
       }
@@ -18,7 +27,7 @@
         text = "Sleep";
       }
       {
-        label = "shutdown";
+        label = "poweroff";
         action = "systemctl poweroff";
         text = "Power off";
       }

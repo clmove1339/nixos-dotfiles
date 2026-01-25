@@ -39,8 +39,24 @@ button {
     margin: 20px;
 }
 
-button:focus, 
+button:focus,
 button:active {
     background-color: @bg;
     border: 2px solid @accent;
+}
+
+#signout {
+    background-image: image(url("./icons/logout.png"));
+}
+
+#suspend {
+    background-image: image(url("./icons/bedtime.png"));
+}
+
+#poweroff {
+    background-image: image(url("./icons/power_settings_new.png"));
+}
+
+#reboot {
+    background-image: image(url("./icons/restart_alt.png"));
 }
