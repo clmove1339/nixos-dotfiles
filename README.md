@@ -7,7 +7,7 @@
 
 ![NixOS](https://img.shields.io/badge/NixOS-25.11-blue?logo=nixos)
 ![Hyprland](https://img.shields.io/badge/Hyprland-Wayland-red?logo=linux)
-![License](https://img.shields.io/github/license/clmove/nixos-dotfiles)
+![License](https://img.shields.io/github/license/clmove1339/nixos-dotfiles)
 
 </div>
 
