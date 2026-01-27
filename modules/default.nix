@@ -83,7 +83,7 @@
   home.packages = with pkgs; [
     libnotify
 
-    qwen-code # vibe-coding
+    qwen-code
 
     firefox
     vesktop

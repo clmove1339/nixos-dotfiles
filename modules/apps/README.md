@@ -1,14 +1,8 @@
-<div align="center">
+# Application Modules
 
-# 📋 Application Modules
+Configuration modules for various applications
 
-*Configuration modules for various applications*
+## Contents
 
-</div>
-
-## 📁 Contents
-
-<ul>
-<li><code>ghostty/</code> - <strong>Ghostty</strong> terminal emulator configuration</li>
-<li><code>rofi/</code> - <strong>Rofi</strong> application launcher configuration</li>
-</ul>
+- `ghostty/` - **Ghostty** terminal emulator configuration
+- `rofi/` - **Rofi** application launcher configuration

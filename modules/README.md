@@ -1,21 +1,13 @@
-<div align="center">
+# Modules
 
-# 📦 Modules
+Home Manager modules that define user-level configuration
 
-*Home Manager modules that define user-level configuration*
+## Categories
 
-</div>
+- [desktop/](./desktop/) - Desktop environment and window management
+- [apps/](./apps/) - Application configurations
+- [system/](./system/) - System-level utilities
 
-## 🗂️ Categories
+## Entry Point
 
-<ul>
-<li><a href="./desktop/"><strong>desktop/</strong></a> - Desktop environment and window management</li>
-<li><a href="./apps/"><strong>apps/</strong></a> - Application configurations</li>
-<li><a href="./system/"><strong>system/</strong></a> - System-level utilities</li>
-</ul>
-
-## 🚪 Entry Point
-
-<ul>
-<li><code>default.nix</code> - Main home configuration that imports all other modules</li>
-</ul>
+- `default.nix` - Main home configuration that imports all other modules

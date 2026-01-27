@@ -1,31 +1,24 @@
-<div align="center">
+# clmove's NixOS Dotfiles
 
-# 🚀 clmove's NixOS Dotfiles
-
-*Welcome to my personal NixOS setup with a focus on a Wayland desktop environment using Hyprland.*
-
+A personal NixOS setup with a focus on a Wayland desktop environment using Hyprland.
 
 ![NixOS](https://img.shields.io/badge/NixOS-25.11-blue?logo=nixos)
 ![Hyprland](https://img.shields.io/badge/Hyprland-Wayland-red?logo=linux)
 ![License](https://img.shields.io/github/license/clmove1339/nixos-dotfiles)
 
-</div>
-
-## 🎨 Overview
+## Overview
 
 This configuration provides a sleek and efficient desktop environment featuring:
 
-<ul>
-<li><b>Desktop Environment</b>: <code>Hyprland</code> (Wayland compositor)</li>
-<li><b>Terminal</b>: <code>Ghostty</code></li>
-<li><b>Application Launcher</b>: <code>Rofi</code></li>
-<li><b>Status Bar</b>: <code>Waybar</code></li>
-<li><b>Shell</b>: <code>Zsh</code> with custom configurations</li>
-<li><b>Window Manager</b>: <code>Hyprland</code> with custom keybindings</li>
-<li><b>Theming</b>: Dark theme with custom colors</li>
-</ul>
+- Desktop Environment: `Hyprland` (Wayland compositor)
+- Terminal: `Ghostty`
+- Application Launcher: `Rofi`
+- Status Bar: `Waybar`
+- Shell: `Zsh` with custom configurations
+- Window Manager: `Hyprland` with custom keybindings
+- Theming: Dark theme with custom colors
 
-## 📁 Structure
+## Structure
 
 ```
 nixos-dotfiles/
@@ -48,36 +41,36 @@ nixos-dotfiles/
         └── wlogout/      # Logout dialog
 ```
 
-## ⌨️ Features
+## Features
 
 ### Keybindings (Hyprland)
 
-| 🔥 Binding              | 📌 Action                              |
-|------------------------|----------------------------------------|
-| <kbd>$mod + Enter</kbd>       | Open terminal                            |
-| <kbd>$mod + Space</kbd>       | Open app launcher (Rofi)               |
-| <kbd>$mod + Q</kbd>           | Close active window                      |
-| <kbd>$mod + F</kbd>           | Toggle fullscreen                        |
-| <kbd>$mod + V</kbd>           | Toggle floating                          |
-| <kbd>$mod + Arrow Keys</kbd>  | Move focus                               |
-| <kbd>$mod + Shift + Arrow Keys</kbd> | Move window                         |
-| <kbd>$mod + Ctrl + Left/Right</kbd> | Cycle through workspaces           |
-| <kbd>$mod + [0-9]</kbd>       | Switch to workspace                      |
-| <kbd>$mod + Shift + [0-9]</kbd> | Move window to workspace               |
+| Binding                   | Action                              |
+|---------------------------|-------------------------------------|
+| <kbd>$mod + Enter</kbd>       | Open terminal                       |
+| <kbd>$mod + Space</kbd>       | Open app launcher (Rofi)            |
+| <kbd>$mod + Q</kbd>           | Close active window                 |
+| <kbd>$mod + F</kbd>           | Toggle fullscreen                   |
+| <kbd>$mod + V</kbd>           | Toggle floating                     |
+| <kbd>$mod + Arrow Keys</kbd>  | Move focus                          |
+| <kbd>$mod + Shift + Arrow Keys</kbd> | Move window                  |
+| <kbd>$mod + Ctrl + Left/Right</kbd> | Cycle through workspaces      |
+| <kbd>$mod + [0-9]</kbd>       | Switch to workspace                 |
+| <kbd>$mod + Shift + [0-9]</kbd> | Move window to workspace          |
 
-### 🛠️ Shell Aliases
+### Shell Aliases
 
-| 🏷️ Alias        | ⚙️ Command                                |
-|----------------|------------------------------------------|
-| `nix-switch`   | `sudo nixos-rebuild switch --flake .`   |
-| `nix-test`     | `sudo nixos-rebuild test --flake .`     |
-| `nix-clean`    | `sudo nix-collect-garbage -d && nix-store --optimize` |
-| `l`            | `eza --icons --group-directories-first --git` |
-| `ll`           | `l -lh`                                   |
-| `la`           | `l -a`                                    |
-| `lt`           | `l --tree`                                |
+| Alias        | Command                                |
+|--------------|----------------------------------------|
+| `nix-switch` | `sudo nixos-rebuild switch --flake .`  |
+| `nix-test`   | `sudo nixos-rebuild test --flake .`    |
+| `nix-clean`  | `sudo nix-collect-garbage -d && nix-store --optimize` |
+| `l`          | `eza --icons --group-directories-first --git` |
+| `ll`         | `l -lh`                                |
+| `la`         | `l -a`                                 |
+| `lt`         | `l --tree`                             |
 
-## ⚡ Setup Instructions
+## Setup Instructions
 
 ### Prerequisites
 
@@ -109,7 +102,7 @@ To update the flake lock file and get the latest versions of inputs:
 nix flake update
 ```
 
-## 🛠️ Development
+## Development
 
 ### Formatting
 
@@ -132,10 +125,10 @@ sudo nixos-rebuild test --flake .
 
 This creates a temporary environment with your changes applied, allowing you to test before committing to the system configuration.
 
-## 🤝 Contributing
+## Contributing
 
 Feel free to fork this repository and adapt it to your needs. If you find any issues or have suggestions, please open an issue or submit a pull request.
 
-## ©️ License
+## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
